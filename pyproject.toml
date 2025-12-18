@@ -5,17 +5,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 
-dependencies = ["fastapi[standard]>=0.125.0"]
+dependencies = ["fastapi[standard]>=0.125.0", "httpx>=0.28.1"]
 
 [dependency-groups]
-dev = [
-    "pytest>=9.0.2",
-    "ruff>=0.14.9",
-    "ty>=0.0.2",
-]
+dev = ["pytest>=9.0.2", "ruff>=0.14.9", "ty>=0.0.2"]
 
 [tool.ty.environment]
 root = ["./app"]
 
 [tool.pytest.ini_options]
 pythonpath = "app"
+testpaths = ["tests"]

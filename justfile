@@ -27,5 +27,8 @@ remove DEPENDENCY ARGS="":
 remove-dev DEPENDENCY ARGS="":
 	uv remove --dev {{DEPENDENCY}} {{ARGS}}
 
+test:
+	uv run pytest
+
 sync:
 	uv sync

@@ -31,7 +31,8 @@
         "**/.git": true,
         "**/.venv": true,
         "**/__pycache__": true,
-        "**/.ruff_cache": true
+        "**/.ruff_cache": true,
+        "tests/.pytest_cache": true
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
