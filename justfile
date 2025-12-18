@@ -1,4 +1,4 @@
-PROJECT_NAME := "sonarqube-fastapi"
+PROJECT_NAME := "fastapi-modern-toolchain-template"
 
 dev:
 	uv run fastapi dev app/main.py
