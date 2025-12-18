@@ -14,3 +14,13 @@ tests/.pytest_cache/
 # Virtual environments
 .venv
 .env
+
+.coverage
+coverage.xml
+htmlcov/
+
+.scannerwork/
+.secrets
+
+*.swp
+*.log
