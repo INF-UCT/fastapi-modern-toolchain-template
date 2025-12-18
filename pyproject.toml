@@ -1,5 +1,5 @@
 [project]
-name = "fastapi-modern-toolchain-templatee"
+name = "fastapi-modern-toolchain-template"
 version = "0.1.0"
 description = "This project serves as a template for a modern Python toolchain setup."
 authors = [{ name = "Your Name", email = "your.email@example.com" }]
