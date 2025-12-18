@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "vivaxy.vscode-conventional-commits",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "mikestead.dotenv",
+        "usernamehw.errorlens",
+        "tamasfe.even-better-toml",
+        "charliermarsh.ruff",
+        "astral-sh.ty"
+    ]
+}

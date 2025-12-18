@@ -1,0 +1,80 @@
+{
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none"
+    },
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/app"
+    ],
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    // Test settings
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.cwd": "${workspaceFolder}/tests",
+    "python.testing.pytestPath": "${workspaceFolder}/.venv/bin/pytest",
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    // Editor settings
+    "editor.indentSize": "tabSize",
+    "editor.tabSize": 4,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+    },
+    "search.exclude": {
+        "__pycache__": true,
+        ".ruff_cache": true,
+        ".venv": true,
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.venv": true,
+        "**/__pycache__": true,
+        "**/.ruff_cache": true
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+        ".env": "*.env, .env.*, .envrc, env.d.ts",
+        "pyproject.toml": "uv.lock, pyproject.toml, ruff.toml, .ruff.toml, .python-version, .tool-versions, .pre-commit-config.yaml",
+        "requirements.txt": "requirements*.in, requirements*.pip, requirements*.txt, constraints.txt",
+        "README*": "AUTHORS, BACKERS*, CHANGELOG*, CONTRIBUTING*, CODE_OF_CONDUCT*, LICENSE*, SECURITY.md, MAINTAINERS",
+        "Makefile": "*.mk",
+        "Dockerfile": "*.dockerfile, .devcontainer.*, .dockerignore, compose.*, docker-compose.*, dockerfile*"
+    },
+    "python.languageServer": "None",
+    "ty.completions.autoImport": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.indentSize": "tabSize"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        }
+    },
+    "[just]": {
+        "editor.defaultFormatter": "nefrob.vscode-just-syntax",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.indentSize": "tabSize"
+    },
+    "errorLens.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+}
