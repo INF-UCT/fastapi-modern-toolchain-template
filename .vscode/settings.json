@@ -32,7 +32,8 @@
         "**/.venv": true,
         "**/__pycache__": true,
         "**/.ruff_cache": true,
-        "tests/.pytest_cache": true
+        "tests/.pytest_cache": true,
+        ".pytest_cache": true
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,

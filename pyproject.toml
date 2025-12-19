@@ -38,6 +38,8 @@ addopts = [
 [tool.coverage.run]
 source = ["app"]
 omit = ["*/tests/*", "*/__pycache__/*", "*/.venv/*"]
+branch = true
+relative_files = true
 
 [tool.coverage.report]
 exclude_lines = [

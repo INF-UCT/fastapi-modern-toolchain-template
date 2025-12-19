@@ -35,3 +35,6 @@ sync:
 
 sonar:
 	bash ./run-sonar.sh
+
+test-clean:
+	rm -rf .coverage coverage.xml
