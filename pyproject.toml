@@ -9,7 +9,13 @@ requires-python = ">=3.12"
 dependencies = ["fastapi[standard]>=0.125.0", "httpx>=0.28.1"]
 
 [dependency-groups]
-dev = ["pytest>=9.0.2", "ruff>=0.14.9", "ty>=0.0.2"]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.14.9",
+    "ty>=0.0.2",
+    "coverage>=7.13.0",
+    "pytest-cov>=7.0.0",
+]
 
 [tool.ty.environment]
 root = ["./app"]
@@ -20,3 +26,28 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+addopts = [
+    "--cov=app",
+    "--cov-report=xml:coverage.xml",
+    # "--cov-report=html",
+    "--cov-report=term-missing",
+    "--cov-branch",
+    "-v",
+]
+
+[tool.coverage.run]
+source = ["app"]
+omit = ["*/tests/*", "*/__pycache__/*", "*/.venv/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.xml]
+output = "coverage.xml"

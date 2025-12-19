@@ -32,3 +32,6 @@ test:
 
 sync:
 	uv sync
+
+sonar:
+	bash ./run-sonar.sh
