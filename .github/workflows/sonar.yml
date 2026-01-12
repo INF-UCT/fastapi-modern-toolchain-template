@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # Importante: SonarQube necesita el historial completo
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:
@@ -26,12 +26,8 @@ jobs:
 
       - name: Verify coverage files
         run: |
-          echo "=== Coverage files generated ==="
-          ls -la coverage.xml .coverage 2>/dev/null || echo "⚠️  Coverage files not found"
           if [ -f coverage.xml ]; then
             echo "✅ coverage.xml exists"
-            echo "First 10 lines:"
-            head -10 coverage.xml
           else
             echo "❌ coverage.xml NOT found - SonarQube won't have coverage data"
           fi
@@ -47,14 +43,10 @@ jobs:
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # Este paso fallará la PR/push si el Quality Gate no pasa
 
       - name: Report results
         if: always()
         run: |
-          echo "=========================================="
           echo "✅ Tests and SonarQube analysis complete!"
-          echo "=========================================="
           echo "📊 View detailed results at:"
           echo "${{ secrets.SONAR_HOST_URL }}/dashboard?id=fastapi-modern-toolchain-template"
-          echo "=========================================="
