@@ -17,14 +17,6 @@ This repository provides a template for setting up a modern Python development e
 
 - [GNU Make](https://www.gnu.org/software/make/) for build automation
 
-- [Act](https://github.com/nektos/act) for running GitHub Actions locally
-
-## Install Act
-
-```bash
-  curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
-```
-
 ## Running the Project
 
 This instructions follows the base setup of the `main` branch.
@@ -54,8 +46,19 @@ This instructions follows the base setup of the `main` branch.
    just dev
    ```
 
-## Run SonarQube Locally Using Act
+## Setup Github Actions for SonarQube
 
-```bash
-  ./run-sonar.sh
-```
+1. Identify the `.env.example` file.
+2. Create a copy of the `.env.example` file and rename it to `.env`.
+3. Complete the `SONAR_TOKEN` and `SONAR_HOST_URL` values in the `.env` file.
+
+4. Go to the repository settings on GitHub, navigate to "Secrets and variables" > "Actions", and add the following secrets:
+
+   - `SONAR_TOKEN`: Your SonarQube authentication token.
+   - `SONAR_HOST_URL`: The URL of your SonarQube server.
+
+5. Done!. The Github Actions will now be able to access the SonarQube server using the provided secrets.
+
+## How to use this Template?
+
+This template includes three branches. If you want to use the base setup without SonarQube integration, you can simply use the `main` branch. If you want to include SonarQube integration, you can use the `sonarqube` branch.

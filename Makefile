@@ -1,4 +1,4 @@
-.PHONY: dev uv lint fmt check add add-dev remove remove-dev test sync sonar test-clean
+.PHONY: dev uv lint fmt check add add-dev remove remove-dev test sync test-clean
 
 dev:
 	uv run fastapi dev app/main.py
@@ -32,9 +32,6 @@ test:
 
 sync:
 	uv sync
-
-sonar:
-	bash ./run-sonar.sh
 
 test-clean:
 	rm -rf .coverage coverage.xml
