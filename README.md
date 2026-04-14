@@ -11,8 +11,8 @@ This repository provides a template for setting up a modern Python development e
 
 - Python 3.12 or higher
 
-- [Just](https://github.com/casey/just) for task management
-- [uv](https://docs.astral.sh/uv/) for package management and general project setup
+- [Make](https://www.gnu.org/software/make/) for task management
+- [uv](https://docs.astral.sh/uv/installation/) for package management and general project setup
 
 ## Running the Project
 
@@ -32,10 +32,10 @@ This instructions follows the base setup of the `main` branch.
 
 4. **Install Dependencies**:
    ```bash
-   just sync
+   make sync
     ```
 
 5. **Run the Application**:
     ```bash
-    just dev
+    make dev
     ```
