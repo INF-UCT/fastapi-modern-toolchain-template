@@ -8,6 +8,19 @@ requires-python = ">=3.12"
 
 dependencies = ["fastapi[standard]>=0.125.0", "httpx>=0.28.1"]
 
+# ---------------------------------------------------------------------------
+# DEPENDENCIAS DE DESARROLLO (dev)
+# ---------------------------------------------------------------------------
+# Estas dependencias solo se instalan en entornos de desarrollo (no en
+# producción). Incluyen herramientas para testing, calidad de código, etc.
+#
+# pytest:          Framework de pruebas para Python.
+# ruff:            Linter y formateador rápido de código Python.
+# ty:              Type checker estático para Python.
+# coverage:        Herramienta que mide qué porcentaje del código se ejecuta
+#                  durante las pruebas (cobertura).
+# pytest-cov:      Plugin de pytest que integra coverage directamente en los
+#                  comandos de pytest.
 [dependency-groups]
 dev = [
     "pytest>=9.0.2",
@@ -20,6 +33,23 @@ dev = [
 [tool.ty.environment]
 root = ["./app"]
 
+# ---------------------------------------------------------------------------
+# CONFIGURACIÓN DE PYTEST CON COBERTURA
+# ---------------------------------------------------------------------------
+# Define cómo se ejecutan las pruebas y cómo se genera el reporte de
+# cobertura.
+#
+# pythonpath:  Directorio raíz del código (para resolver imports).
+# testpaths:   Carpeta donde pytest buscará los archivos de prueba.
+# python_files:   Patrón para identificar archivos de prueba.
+# python_classes: Patrón para identificar clases de prueba.
+# python_functions: Patrón para identificar funciones de prueba.
+#
+# addopts:
+#   --cov=app               Mide cobertura sobre el módulo "app".
+#   --cov-report=xml        Genera reporte XML (lo usa SonarQube).
+#   --cov-report=term-missing  Muestra en terminal las líneas no cubiertas.
+#   --cov-branch            Mide cobertura de ramas (if/else completos).
 [tool.pytest.ini_options]
 pythonpath = "app"
 testpaths = ["tests"]
@@ -29,27 +59,45 @@ python_functions = ["test_*"]
 addopts = [
     "--cov=app",
     "--cov-report=xml:coverage.xml",
-    # "--cov-report=html",
+    # "--cov-report=html",   # Descomentar para generar reporte HTML navegable
     "--cov-report=term-missing",
     "--cov-branch",
     "-v",
 ]
 
+# ---------------------------------------------------------------------------
+# CONFIGURACIÓN DE COVERAGE (ejecución)
+# ---------------------------------------------------------------------------
+# source:         Módulo(s) sobre los que se mide la cobertura.
+# omit:           Patrones de archivos a excluir del reporte de cobertura.
+# branch:         Activa cobertura de ramas (mide caminos if/else/except).
+# relative_files: Usa rutas relativas en los reportes (portable entre equipos).
 [tool.coverage.run]
 source = ["app"]
 omit = ["*/tests/*", "*/__pycache__/*", "*/.venv/*"]
 branch = true
 relative_files = true
 
+# ---------------------------------------------------------------------------
+# CONFIGURACIÓN DE COVERAGE (reporte)
+# ---------------------------------------------------------------------------
+# exclude_lines:  Líneas que coverage debe ignorar al calcular cobertura.
+#                 Útil para código que no necesita ser probado (ej. guards,
+#                 métodos mágicos __repr__, etc.).
 [tool.coverage.report]
 exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "raise AssertionError",
-    "raise NotImplementedError",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
+    "pragma: no cover",          # Exclusión manual: # pragma: no cover
+    "def __repr__",              # Métodos de representación (generalmente triviales)
+    "raise AssertionError",      # Errores de aserción estándar
+    "raise NotImplementedError", # Métodos abstractos pendientes de implementar
+    "if __name__ == .__main__.:",# Guard de entrada del script
+    "if TYPE_CHECKING:",         # Importaciones condicionales para type hints
 ]
 
+# ---------------------------------------------------------------------------
+# CONFIGURACIÓN DE COVERAGE (salida XML)
+# ---------------------------------------------------------------------------
+# output:  Nombre del archivo XML generado. Este archivo es el que lee
+#          SonarQube para mostrar la cobertura en su dashboard.
 [tool.coverage.xml]
 output = "coverage.xml"
