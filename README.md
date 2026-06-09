@@ -7,8 +7,6 @@ This repository provides a template for setting up a modern Python development e
 - `main`: The main branch containing the base version of the project.
 - `sonarqube`: A branch dedicated to SonarQube integration and configuration.
 
-- `sonarqube-local`: A branch dedicated to SonarQube integration and configuration with local setup using `act` to run github actions locally.
-
 ## Requirements
 
 - Python 3.12 or higher
@@ -23,28 +21,28 @@ This instructions follows the base setup of the `main` branch.
 
 1. **Clone the Repository**:
 
-   ```bash
-   git clone https://github/INF-UCT/modern-python-toolchain-template.git
-   ```
+    ```bash
+    git clone https://github/INF-UCT/modern-python-toolchain-template.git
+    ```
 
 2. **Navigate to the Project Directory**:
 
-   ```bash
-    cd modern-python-toolchain-template
-   ```
+    ```bash
+     cd modern-python-toolchain-template
+    ```
 
 3. **Ensure you have the required tools installed**:
 
 4. **Install Dependencies**:
 
-   ```bash
-   just sync
-   ```
+    ```bash
+    make sync
+    ```
 
 5. **Run the Application**:
-   ```bash
-   just dev
-   ```
+    ```bash
+    make dev
+    ```
 
 ## Setup Github Actions for SonarQube
 
@@ -53,9 +51,8 @@ This instructions follows the base setup of the `main` branch.
 3. Complete the `SONAR_TOKEN` and `SONAR_HOST_URL` values in the `.env` file.
 
 4. Go to the repository settings on GitHub, navigate to "Secrets and variables" > "Actions", and add the following secrets:
-
-   - `SONAR_TOKEN`: Your SonarQube authentication token.
-   - `SONAR_HOST_URL`: The URL of your SonarQube server.
+    - `SONAR_TOKEN`: Your SonarQube authentication token.
+    - `SONAR_HOST_URL`: The URL of your SonarQube server.
 
 5. Done!. The Github Actions will now be able to access the SonarQube server using the provided secrets.
 
